@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe/Features/Home/Presentation/Manager/Cubit/food_cubit.dart';
+import 'package:recipe/Features/Home/Presentation/Views/Widgets/dish.dart';
 import 'package:recipe/Features/Home/Presentation/Views/Widgets/dish_of_the_day.dart';
 import 'package:recipe/Features/Home/Presentation/Views/search.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -69,58 +70,7 @@ class _FoodListScreenState extends State<FoodListScreen> {
                                   ),
                                   itemCount: state.food.length,
                                   itemBuilder: (context, index) {
-                                    return Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(10),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.grey.withOpacity(0.5),
-                                            blurRadius: 5,
-                                            spreadRadius: 2,
-                                            offset: Offset(0, 3),
-                                          ),
-                                        ],
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          ClipRRect(
-                                            borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
-                                            child: Image.network(
-                                              state.food[index].image,
-                                              fit: BoxFit.cover,
-                                              height: 120,
-                                              width: double.infinity,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 8),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                            child: Text(
-                                              state.food[index].name,
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: const TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                          ),
-                                          const SizedBox(height: 8), // Space before the icon
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                            child: Align(
-                                              alignment: Alignment.centerRight, // Align icon to the end
-                                              child: IconButton(
-                                                onPressed: () {},
-                                                icon: Icon(Icons.arrow_forward_ios, size: 12),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    );
+                                    return Dish(foodList: foodList, index: index,);
                                   },
                                 ),
                               ],

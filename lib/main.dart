@@ -4,6 +4,7 @@ import 'package:recipe/Features/Home/Data/Service/api_handler.dart';
 import 'package:recipe/Features/Home/Presentation/Manager/Cubit/food_cubit.dart';
 
 import 'Features/Home/Presentation/Manager/Cubit/search_cubit.dart';
+import 'Features/Home/Presentation/Views/Widgets/detailed_dish.dart';
 import 'Features/Home/Presentation/Views/home_view.dart';
 //https://postimg.cc/gallery/T3XkzVL/d0c02eab
 void main() {
