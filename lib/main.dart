@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
           create: (BuildContext context) => SearchFoodCubit(FoodService()),
         ),
       ],
-      child: MaterialApp(
-
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: FoodListScreen()
       ),
     );

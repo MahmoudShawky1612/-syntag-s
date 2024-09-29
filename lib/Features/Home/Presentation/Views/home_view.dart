@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe/Features/Home/Presentation/Manager/Cubit/food_cubit.dart';
 import 'package:recipe/Features/Home/Presentation/Views/Widgets/dish.dart';
 import 'package:recipe/Features/Home/Presentation/Views/Widgets/dish_of_the_day.dart';
+import 'package:recipe/Features/Home/Presentation/Views/Widgets/floating_search_bar.dart';
+import 'package:recipe/Features/Home/Presentation/Views/Widgets/grid_view_builder.dart';
 import 'package:recipe/Features/Home/Presentation/Views/search.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -11,6 +13,8 @@ import '../Manager/Cubit/food_states.dart';
 import 'Widgets/new_dishes.dart';
 
 class FoodListScreen extends StatefulWidget {
+  const FoodListScreen({super.key});
+
   @override
   _FoodListScreenState createState() => _FoodListScreenState();
 }
@@ -46,72 +50,26 @@ class _FoodListScreenState extends State<FoodListScreen> {
                               children: [
                                 // Red container
                                 const DishOfTheDay(),
-
                                 const SizedBox(height: 23),
-
                                 const Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 8.0),
                                   child: Text("New Dishes"),
                                 ),
                                 const SizedBox(height: 15),
-
                                 // Horizontal list
                                  NewDishes(foodList: foodList),
-
-                                // Grid view with 2 columns
-                                GridView.builder(
-                                  shrinkWrap: true, // Ensures it fits in the SingleChildScrollView
-                                  physics: const NeverScrollableScrollPhysics(), // Disable internal scrolling
-                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2, // Two columns
-                                    crossAxisSpacing: 10.0, // Spacing between columns
-                                    mainAxisSpacing: 20.0, // Spacing between rows
-                                    childAspectRatio: 0.79, // Aspect ratio
-                                  ),
-                                  itemCount: state.food.length,
-                                  itemBuilder: (context, index) {
-                                    return Dish(foodList: foodList, index: index,);
-                                  },
-                                ),
+                                // Grid view
+                                GridViewBuilder(foodList: foodList),
                               ],
                             ),
                           ),
                         ),
-
                       ],
                     ),
                   ),
                 ),
                 // Floating Search Bar
-                Positioned(
-                  top: 50,
-                  left: 10,
-                  right: 10,
-                  child: GestureDetector(
-                    onTap: () {
-                      // Navigate to the SearchScreen
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SearchScreen(),
-                        ),
-                      );
-                    },
-                    child: Material(
-                      elevation: 5,
-                      borderRadius: BorderRadius.circular(30),
-                      child: const TextField(
-                        enabled: false, // Disable typing in this screen
-                        decoration: InputDecoration(
-                          hintText: 'Search recipes...',
-                          contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
-                          suffixIcon: Icon(Icons.search, color: Colors.black),
-                          border: InputBorder.none,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                const FloatingSearchBar(),
               ],
             );
           } else if (state is ErrorFoodState) {

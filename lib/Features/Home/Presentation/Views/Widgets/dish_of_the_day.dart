@@ -13,32 +13,68 @@ class DishOfTheDay extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.blueAccent.withOpacity(0.5),
-              spreadRadius: 5,
+              color: Colors.black87.withOpacity(0.5),
+              spreadRadius: 3,
               blurRadius: 5,
               offset: const Offset(4, 6),
             ),
           ],
-          image: const DecorationImage(image:
+          image: const DecorationImage(
+              image:
           NetworkImage('https://images.pexels.com/photos/1860208/pexels-photo-1860208.jpeg?cs=srgb&dl=cooked-food-1860208.jpg&fm=jpg'),
               fit: BoxFit.cover
           ),
-          color: Colors.red,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(15),
         ),
-        child: GradientText(
-          "Dish Of The Day",
-          gradientDirection: GradientDirection.btt,
-          style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 25
-          ),
-          colors: const [
-            Colors.teal,
-            Colors.lightBlue,
-            Colors.red
+        child: const Stack(
+          children: [
+            Positioned(
+              top: 10,
+              left:10,
+                child: Text(
+                  "Dish",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 35,
+                  color: Colors.white,
+                ),
+                )),
+            Positioned(
+              top: 33,
+              left:50,
+                child: Text(
+                    "Of",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 35,
+                    color: Colors.white,
+                  ),
+                )) ,
+            Positioned(
+              top: 55,
+              left:70,
+                child: Text(
+                    "The",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 35,
+                    color: Colors.white,
+                  ),
+                )) ,
+            Positioned(
+              top: 78,
+              left:95,
+                child: Text(
+                    "Day",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 35,
+                    color: Colors.white,
+                  ),
+                ))
           ],
-        )
+        ),
     );
   }
 }
