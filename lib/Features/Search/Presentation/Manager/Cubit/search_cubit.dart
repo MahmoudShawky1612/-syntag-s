@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe/Features/Home/Data/Service/api_handler.dart';
-import 'package:recipe/Features/Home/Presentation/Manager/Cubit/search_states.dart';
+import 'package:recipe/Features/Search/Presentation/Manager/Cubit/search_states.dart';
 
 class SearchFoodCubit extends Cubit<SearchFoodStates>{
   final FoodService foodService;

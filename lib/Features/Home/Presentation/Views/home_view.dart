@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe/Features/Home/Presentation/Manager/Cubit/food_cubit.dart';
 import 'package:recipe/Features/Home/Presentation/Views/Widgets/dish_of_the_day.dart';
-import 'package:recipe/Features/Home/Presentation/Views/Widgets/floating_search_bar.dart';
+import 'package:recipe/Features/Search/Presentation/Views/Widgets/floating_search_bar.dart';
 import 'package:recipe/Features/Home/Presentation/Views/Widgets/grid_view_builder.dart';
 import 'package:shimmer/shimmer.dart';
 import '../Manager/Cubit/food_states.dart';

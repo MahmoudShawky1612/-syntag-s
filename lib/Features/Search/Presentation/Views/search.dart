@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recipe/Features/Home/Presentation/Manager/Cubit/search_cubit.dart';
-import 'package:recipe/Features/Home/Presentation/Manager/Cubit/search_states.dart';
-import 'Widgets/detailed_dish.dart';
-import 'Widgets/back_button.dart';
+import 'package:recipe/Features/Search/Presentation/Manager/Cubit/search_cubit.dart';
+import 'package:recipe/Features/Search/Presentation/Manager/Cubit/search_states.dart';
+import '../../../Home/Presentation/Views/Widgets/detailed_dish.dart';
+import '../../../Home/Presentation/Views/Widgets/back_button.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
