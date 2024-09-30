@@ -30,7 +30,7 @@ class DetailedDish extends StatelessWidget {
             children: [
               const GoBackButton(),
               Positioned(
-                top: 260,
+                top: 370,
                 child: Container(
                   decoration: const BoxDecoration(
                     color: Colors.white,
@@ -40,7 +40,7 @@ class DetailedDish extends StatelessWidget {
                     ),
                   ),
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height - 260,
+                  height: MediaQuery.of(context).size.height - 370,
                   child: SingleChildScrollView(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(

@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe/Features/Home/Presentation/Manager/Cubit/food_cubit.dart';
-import 'package:recipe/Features/Home/Presentation/Views/Widgets/dish.dart';
 import 'package:recipe/Features/Home/Presentation/Views/Widgets/dish_of_the_day.dart';
 import 'package:recipe/Features/Home/Presentation/Views/Widgets/floating_search_bar.dart';
 import 'package:recipe/Features/Home/Presentation/Views/Widgets/grid_view_builder.dart';
-import 'package:recipe/Features/Home/Presentation/Views/search.dart';
-import 'package:simple_gradient_text/simple_gradient_text.dart';
-
-import '../../Data/Model/food_model.dart';
+import 'package:shimmer/shimmer.dart';
 import '../Manager/Cubit/food_states.dart';
 import 'Widgets/new_dishes.dart';
+import 'Widgets/shimmer.dart';
 
 class FoodListScreen extends StatefulWidget {
   const FoodListScreen({super.key});
@@ -32,11 +29,18 @@ class _FoodListScreenState extends State<FoodListScreen> {
       body: BlocBuilder<FoodCubit, FoodStates>(
         builder: (context, state) {
           if (state is LoadingFoodState) {
-            return const Center(child: CircularProgressIndicator());
+            return const ShimmerLoading();
           } else if (state is SuccessFoodState) {
             final foodList = state.food;
             return Stack(
               children: [
+                // Background image
+                Positioned.fill(
+                  child: Image.asset(
+                    'assets/images/unnamed (1).png', // Replace with your background image path
+                    fit: BoxFit.cover,
+                  ),
+                ),
                 SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 130.0),
@@ -44,11 +48,10 @@ class _FoodListScreenState extends State<FoodListScreen> {
                       children: [
                         SingleChildScrollView(
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 20.0,horizontal: 10), // Space for the floating search bar
+                            padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                // Red container
                                 const DishOfTheDay(),
                                 const SizedBox(height: 23),
                                 const Padding(
@@ -56,9 +59,7 @@ class _FoodListScreenState extends State<FoodListScreen> {
                                   child: Text("New Dishes"),
                                 ),
                                 const SizedBox(height: 15),
-                                // Horizontal list
-                                 NewDishes(foodList: foodList),
-                                // Grid view
+                                NewDishes(foodList: foodList),
                                 GridViewBuilder(foodList: foodList),
                               ],
                             ),

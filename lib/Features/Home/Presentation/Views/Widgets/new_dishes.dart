@@ -39,9 +39,12 @@ class NewDishes extends StatelessWidget {
                             MaterialPageRoute(builder: (context) =>  DetailedDish(foodItem: foodList, index: index,)),
                           );
                         },
-                        child: Image.network(
-                          foodList[index].image,
-                          fit: BoxFit.cover,
+                        child: Hero(
+                          tag: foodList[index].name,
+                          child: Image.network(
+                            foodList[index].image,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),

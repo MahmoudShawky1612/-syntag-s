@@ -18,9 +18,9 @@ class GridViewBuilder extends StatelessWidget {
         mainAxisSpacing: 20.0, // Spacing between rows
         childAspectRatio: 0.79, // Aspect ratio
       ),
-      itemCount: foodList.length,
+      itemCount: (foodList.length - 5).clamp(0, foodList.length),
       itemBuilder: (context, index) {
-        return Dish(foodList: foodList, index: index,);
+        return Dish(foodList: foodList, index: index+5,);
       },
     );
   }
