@@ -2,6 +2,8 @@ const Food = require('../model/food');
 const statusUtils = require('../utils/status');
 const appError = require('../utils/appError');
 const asyncWrapper = require('../middleware/asyncWrapper');
+const collect = require('collect.js'); 
+
 
 
 const addFood =  asyncWrapper ( async ( req , res , next ) => {
@@ -94,11 +96,49 @@ const searchFood =asyncWrapper ( async (req,res,next) => {
       res.status(200).json({ success: statusUtils.SUCCESS, data: { food } });
 });
 
+const rateFood = asyncWrapper(async(req,res,next)=>{
+    const id = req.params.id.trim();
+    const rates = req.body;
+    const food = await Food.findByIdAndUpdate(
+        id,
+        { $push: rates },
+        {
+        new: true,
+        runValidators: true,
+        }
+    );
+    
+    const ratings = food.rates;
+    let average = collect(ratings).average();
+
+    await Food.findByIdAndUpdate(id, { $set: { averagerating: average }}, {
+        new: true,
+        runValidators: true,
+    });
+
+    res.status(200).json({ success: statusUtils.SUCCESS , data: { food } });
+})
+
+const avgRating =  asyncWrapper(async(req,res)=>{
+    const id = req.params.id.trim();
+    const food = await Food.findById(id);
+    const ratings = food.rates;
+    let average = collect(ratings).average();
+    
+    await Food.findByIdAndUpdate(id, { $set: { averagerating: average }}, {
+        new: true,
+        runValidators: true,
+    });
+
+    res.status(200).json({ success: statusUtils.SUCCESS , data: {average}});
+})
 
 module.exports = {
     addFood,
     getAllFood,
     deleteFood,
     editFood,
-    searchFood
-}; 
+    searchFood,
+    rateFood,
+    avgRating
+};

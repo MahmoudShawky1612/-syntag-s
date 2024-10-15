@@ -29,6 +29,14 @@ const FoodSchema = new mongoose.Schema({
     dish:{
         type:String,
         default:"main"
+    },
+    rates:{
+        type:Array,
+        default: []
+    },
+    averagerating:{
+        type: Number,
+        default: 0 ,
     }
 },
 { versionKey: false }

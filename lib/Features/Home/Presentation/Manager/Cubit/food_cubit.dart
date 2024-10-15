@@ -20,6 +20,8 @@ class FoodCubit extends Cubit<FoodStates>{
     }
   }
 
+
+
 }
 
 

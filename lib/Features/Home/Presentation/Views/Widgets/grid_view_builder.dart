@@ -14,9 +14,9 @@ class GridViewBuilder extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(), // Disable internal scrolling
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2, // Two columns
-        crossAxisSpacing: 10.0, // Spacing between columns
+        crossAxisSpacing: 20.0, // Spacing between columns
         mainAxisSpacing: 20.0, // Spacing between rows
-        childAspectRatio: 0.79, // Aspect ratio
+        childAspectRatio: 0.65, // Aspect ratio
       ),
       itemCount: (foodList.length - 5).clamp(0, foodList.length),
       itemBuilder: (context, index) {

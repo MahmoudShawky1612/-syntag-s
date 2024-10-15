@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe/Features/Home/Data/Service/api_handler.dart';
 import 'package:recipe/Features/Home/Presentation/Manager/Cubit/food_cubit.dart';
+import 'package:recipe/Features/Home/Presentation/Manager/Cubit/rate_cubit.dart';
 
 import 'Features/Search/Presentation/Manager/Cubit/search_cubit.dart';
 import 'Features/Home/Presentation/Views/Widgets/detailed_dish.dart';
@@ -27,6 +28,9 @@ class MyApp extends StatelessWidget {
 
         BlocProvider<SearchFoodCubit>(
           create: (BuildContext context) => SearchFoodCubit(FoodService()),
+        ),
+        BlocProvider<RateCubit>(
+          create: (BuildContext context) => RateCubit(FoodService()),
         ),
       ],
       child: const MaterialApp(

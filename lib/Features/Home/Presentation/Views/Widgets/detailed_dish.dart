@@ -4,6 +4,7 @@ import 'package:recipe/Features/Home/Presentation/Views/Widgets/dish_stack_image
 import 'package:recipe/Features/Home/Presentation/Views/Widgets/ingredients.dart';
 import 'package:recipe/Features/Home/Presentation/Views/Widgets/instructions.dart';
 import 'package:recipe/Features/Home/Presentation/Views/Widgets/name_country.dart';
+import 'package:recipe/Features/Home/Presentation/Views/Widgets/review_section.dart';
 
 import 'back_button.dart';
 
@@ -28,7 +29,12 @@ class DetailedDish extends StatelessWidget {
           ),
           child: Stack(
             children: [
-              const GoBackButton(),
+              IconButton(
+                onPressed: () {
+                  Navigator.pop(context, foodItem[index]); // Return updated food item
+                }, icon: Icon(Icons.keyboard_arrow_left,color:Colors.yellowAccent,size:55),
+                
+              ),
               Positioned(
                 top: 370,
                 child: Container(
@@ -60,6 +66,10 @@ class DetailedDish extends StatelessWidget {
                             const SizedBox(height: 20),
                             // Instructions section
                             Instructions(foodItem: foodItem, index: index),
+                            //Reviews
+                            ReviewSection(foodItem : foodItem, index:index),
+
+
                           ],
                         ),
                       ),
